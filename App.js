@@ -3,28 +3,25 @@
  *
  * @format
  */
-
+"use client";
 import React from 'react';
 import TodoList from './ToDoList.js';
 import TodoForm from './ToDoForm.js';
-import {
-    SafeAreaView,
-    StyleSheet,
-    Pressable,
-    View,
-    Text,
-    ScrollView,
-    TextInput,
-    Button
-} from 'react-native';
-
-
+import {   SafeAreaView,StatusBar} from 'react-native';
+import { useState} from 'react';
 function App() {
+    const [tasks, setTasks] = useState([]);
+    const handleAddTask = (task) => {
+        setTasks([...tasks, task]);
+    }
     return (
+        
         <SafeAreaView>
-            <TodoList />
-            <TodoForm />
+            <TodoList items={tasks}/>
+            <TodoForm onAddItem={handleAddTask}/>
+            <StatusBar style="auto" />
         </SafeAreaView>
+        
     );
 }
 

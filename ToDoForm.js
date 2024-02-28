@@ -1,14 +1,18 @@
+"use client";
 import React from 'react';
+import { View, TextInput, Button, StyleSheet ,Text,} from 'react-native';
 import { useState } from 'react';
-import { View, TextInput, Button, StyleSheet ,Text} from 'react-native';
-function ToDoForm() {
+function ToDoForm({onAddItem}) {
+ const[task, setTask] = useState('');
     return (
         <View style={styles.form}>
             <TextInput
                 style={styles.input}
                 placeholder="Add a new task..."
+                onChangeText={(e) => setTask(e)}
+                required
             />
-            <Button title="Add" />
+            <Button type="submit" title="Add" onPress={()=>{{task != '' ?onAddItem(task):alert("Please Enter a Task")}}}/>
         </View>
     );
 }
