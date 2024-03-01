@@ -5,8 +5,8 @@
  */
 "use client";
 import React from 'react';
-import TodoList from './ToDoList.js';
-import TodoForm from './ToDoForm.js';
+import TodoList from './Component/ToDoList.js';
+import TodoForm from './Component/ToDoForm.js';
 import {   SafeAreaView,StatusBar} from 'react-native';
 import { useState} from 'react';
 function App() {
