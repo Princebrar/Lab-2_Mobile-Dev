@@ -2,17 +2,22 @@
 import React from 'react';
 import { View, TextInput, Button, StyleSheet ,Text,} from 'react-native';
 import { useState } from 'react';
-function ToDoForm({onAddItem}) {
- const[task, setTask] = useState('');
+function ToDoForm({addTask}) {
+ const[taskText, setTaskText] = useState('');
+ const addtask = (taskText) => {
+    addTask(taskText);
+    setTaskText('');
+  };
     return (
         <View style={styles.form}>
             <TextInput
                 style={styles.input}
                 placeholder="Add a new task..."
-                onChangeText={(e) => setTask(e)}
+                onChangeText={(text) => setTaskText(text)}
+                value={taskText}
                 required
             />
-            <Button type="submit" title="Add" onPress={()=>{{task != '' ?onAddItem(task):alert("Please Enter a Task")}}}/>
+            <Button type="submit" title="Add" onPress={()=>{{taskText != '' ?addtask(taskText):alert("Please Enter a Task")}}}/>
         </View>
     );
 }
